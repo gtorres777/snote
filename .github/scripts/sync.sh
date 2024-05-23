@@ -1,7 +1,5 @@
 #!/bin/bash
-#
-
-set -eo pipefail
+set -e
 
 BRANCH="${GITHUB_REF#refs/heads/}"
 
