@@ -1,6 +1,9 @@
 #!/bin/bash
 
-status=$(curl -s -w "%{http_code}" -X PATCH $DATABRICKS_WORKSPACE/api/2.0/repos/658513326252485 -H "Authorization: Bearer $DATABRICKS_TOKEN" -H "Content-Type: application/json" -d '{"branch": "master"}')
+if [[ $GITHUB_BRANCH == "master" ]]; then
+  status=$(curl -s -w "%{http_code}" -X PATCH $DATABRICKS_WORKSPACE/api/2.0/repos/751319337702225 -H "Authorization: Bearer $DATABRICKS_TOKEN" -H "Content-Type: application/json" -d '{"branch": "master"}')
+else
+  status=$(curl -s -w "%{http_code}" -X PATCH $DATABRICKS_WORKSPACE_DEV/api/2.0/repos/751319337702225 -H "Authorization: Bearer $DATABRICKS_TOKEN" -H "Content-Type: application/json" -d '{"branch": "master"}')
 
 status_code=$(echo "$status" | grep -oE '[0-9]{3}$')
 

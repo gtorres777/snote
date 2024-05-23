@@ -2,6 +2,8 @@ name: Sync Prod Notebooks
 on: 
   push: 
     branches: [ master ]
+    paths:
+      - '!.github/**'
     
 env:
   DATABRICKS_WORKSPACE: ${{ secrets.DATABRICKS_WORKSPACE }}
@@ -9,12 +11,12 @@ env:
 
 jobs:
   Sync-Notebooks:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Submit Update Request to Databricks API
-        run: sh ./.github/scripts/notebooksync.sh
+        run: sh ./.github/scripts/notebooksync.sh 
       # - name: Slack Alert
       #   if: ${{ failure() }}
       #   env:
