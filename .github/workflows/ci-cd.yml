@@ -1,13 +1,13 @@
-name: Sync Prod Notebooks
+name: Sync Dev Notebooks
 on: 
   push: 
-    branches: [ master ]
+    branches: [ dev ]
     paths:
       - '!.github/**'
     
 env:
-  DATABRICKS_WORKSPACE: ${{ secrets.DATABRICKS_WORKSPACE }}
-  DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+  DATABRICKS_WORKSPACE_DEV: ${{ secrets.DATABRICKS_WORKSPACE_DEV }}
+  DATABRICKS_TOKEN_DEV: ${{ secrets.DATABRICKS_TOKEN_DEV }}
 
 jobs:
   Sync-Notebooks:
