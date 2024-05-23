@@ -13,17 +13,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Submit Update Request to Databricks API
-        run: sh ./.github/scripts/notebooksync.sh 
-      # - name: Slack Alert
-      #   if: ${{ failure() }}
-      #   env:
-      #     REPO: ${{  github.repository  }}
-      #     WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-      #     AUTHOR: ${{ github.actor  }}
-      #     FAILED_JOB: ${{ github.job }}
-      #     DOCKER_REGISTRY: "eds.docker.artifactory.global.bamgrid.net"
-      #   run: |
-      #       export WORKFLOW_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-      #       export BRANCH="${GITHUB_REF#refs/heads/}"
-      #       docker run -e BRANCH -e REPO -e WEBHOOK_URL -e AUTHOR -e FAILED_JOB -e WORKFLOW_URL "$DOCKER_REGISTRY"/slackalert_workflow_failure/slack-alert:latest
+      - name: Submit Update Request
+        run: sh ./.github/scripts/sync.sh 
