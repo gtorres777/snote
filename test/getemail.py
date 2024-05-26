@@ -1,2 +1,2 @@
 # Databricks notebook source
-print("email sent porfin xD 2")
+print("email sent porfin xD dev")
